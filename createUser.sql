@@ -12,8 +12,7 @@ create table if not exists user_account
 
 create table if not exists user_base
 (
-    id          int                                  not null
-    primary key,
+    id          int                                  not null primary key,
     mobile      varchar(50)  default ''                not null comment '手机号，只用于显示',
     name        varchar(50)  default ''                not null comment '用户显示名',
     password    varchar(100) default ''                not null comment '用户密码',
