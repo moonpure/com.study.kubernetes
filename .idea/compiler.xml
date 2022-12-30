@@ -11,9 +11,14 @@
         <module name="user" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dockerboot" target="17" />
+      <module name="dockerimage" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="dockerboot" options="-parameters" />
       <module name="message" options="-parameters" />
       <module name="user" options="-parameters" />
     </option>

@@ -4,6 +4,7 @@ import org.springframework.web.servlet.mvc.condition.RequestCondition;
 
 import javax.servlet.http.HttpServletRequest;
 
+
 public class ApiVersionCondition implements RequestCondition<ApiVersionCondition> {
 
     private ApiVersionItem apiVersion;

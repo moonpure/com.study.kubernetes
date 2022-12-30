@@ -15,7 +15,7 @@ public class UserBaseAddReq {
     @ApiModelProperty("用户头像")
     private String headimgurl;
     @ApiModelProperty("")
-    private Integer id;
+    private Long id;
     @ApiModelProperty("手机号，只用于显示")
     private String mobile;
     @ApiModelProperty("用户显示名")

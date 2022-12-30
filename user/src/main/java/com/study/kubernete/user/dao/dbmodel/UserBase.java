@@ -36,7 +36,7 @@ public class UserBase  {
      * 
      */
     @TableId(value = "id", type = IdType.INPUT)
-    private Integer id;
+    private Long id;
     /**
      * 手机号，只用于显示
      */

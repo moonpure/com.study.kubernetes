@@ -13,6 +13,7 @@ import com.study.kubernete.user.resp.UserBaseResp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -47,14 +48,16 @@ public class UserBaseServiceImpl {
      * user_base getId
      */
     @Cacheable(cacheNames = "user-UserBaseById", key = "#id", sync = true)
-    public Result<UserBaseResp> getById(Long id) {
+    public Result<UserBase> getById(Long id) {
         UserBase baseEntity = dbUserBaseService.getById(id);
         if (baseEntity == null) {
             return Result.createFailure(ResultCode.DATABASE_QUERY_FAILURE);
         }
-        UserBaseResp resp = BeanCopierTool.convert(baseEntity, UserBaseResp.class);
+        BeanCopier beanCopier = BeanCopier.create(UserBase.class, UserBaseResp.class, false);
+        UserBaseResp ur=new UserBaseResp();
+        beanCopier.copy(baseEntity, ur, null);   //UserBaseResp resp = BeanCopierTool.convert(baseEntity, UserBaseResp.class);
         // SensitiveTool.sensitive(resp);//脱敏
-        return Result.createBySuccess(resp);
+        return Result.createBySuccess(baseEntity);
     }
 
     /**

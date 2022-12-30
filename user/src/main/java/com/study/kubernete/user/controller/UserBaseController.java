@@ -1,16 +1,18 @@
 package com.study.kubernete.user.controller;
 
-import com.baomidou.mybatisplus.core.toolkit.Sequence;
-import com.study.kubernete.user.bllserver.*;
+import com.study.kubernete.user.bllserver.UserBaseServiceImpl;
 import com.study.kubernete.user.core.Result;
+import com.study.kubernete.user.dao.dbmodel.UserBase;
 import com.study.kubernete.user.query.*;
-import com.study.kubernete.user.req.*;
-import com.study.kubernete.user.resp.*;
+import com.study.kubernete.user.req.UserBaseAddReq;
+import com.study.kubernete.user.req.UserBaseEditReq;
+import com.study.kubernete.user.req.UserBaseQueryReq;
+import com.study.kubernete.user.resp.UserBaseResp;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,13 +25,12 @@ import java.util.List;
 class UserBaseController {
     @Autowired
     private  UserBaseServiceImpl userBaseService;
-    @Autowired
-    private Sequence sequence;
     @ApiOperation("UserBase添加")
     @PostMapping("/save")
     public Result<Boolean> save(@RequestBody @Validated UserBaseAddReq entity) {
         //if (entity.getId() == null) {
            // entity.setId(sequence.nextId());
+        //http://localhost:58082/api/userBase/getid/1123456
       //  }
         return userBaseService.save(entity);
     }
@@ -46,7 +47,7 @@ class UserBaseController {
     }
     @ApiOperation("UserBase查询(id)")
     @GetMapping("/getid/{id}")
-    public Result<UserBaseResp> getById(@PathVariable("id") Long id) {
+    public Result<UserBase> getById(@PathVariable("id") Long id) {
         return userBaseService.getById(id);
     }
     @ApiOperation("UserBase单条查询")

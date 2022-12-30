@@ -10,12 +10,12 @@ import com.study.kubernete.user.dao.dbservice.DbUserWechatServiceImpl;
 import com.study.kubernete.user.query.*;
 import com.study.kubernete.user.req.*;
 import com.study.kubernete.user.resp.UserWechatResp;
+import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
